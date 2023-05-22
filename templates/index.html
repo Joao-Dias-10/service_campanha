@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Upload</title>
+</head>
+
+<body>
+    {% if retorno %}
+    <script>
+
+        if ('{{retorno}}'.includes('fora')) {
+            Swal.fire({
+                icon: 'error',
+                title: '{{ retorno }}'
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    window.location.href = "../";
+                } else {
+                    window.location.href = "../";
+                }
+            })
+        }
+        else {
+            Swal.fire({
+                icon: 'success',
+                title: '{{ retorno }}'
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    window.location.href = "../";
+                } else {
+                    window.location.href = "../";
+                }
+            })
+        }
+    </script>
+    {% endif %}
+
+    <style>
+        a {
+            color: rgb(255, 238, 0);
+        }
+
+        h4 {
+            color: #ffffff;
+        }
+
+        body {
+            background-color: #c47526;
+            margin: 4rem;
+        }
+
+        .container {
+            padding: 4rem 5rem;
+            background-color: #fff;
+            border-radius: 1rem;
+            width: 100%;
+            max-width: 45rem;
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 2.8rem;
+            font-weight: 600;
+            margin: 0 0 0.5rem 0;
+            background: -webkit-linear-gradient(#fff, #d6d6d6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+
+        h4 {
+            color: lighten(#de7418, 30%);
+            font-size: 1.5rem;
+            font-weight: 400;
+            text-align: center;
+            margin: 0 0 3.5rem 0;
+        }
+
+        .btn.btn-primary {
+            background-color: #de7418;
+            border-color: #de7418;
+            outline: none;
+
+            &:hover {
+                background-color: darken(#de7418, 10%);
+                border-color: darken(#de7418, 10%);
+            }
+
+            &:active,
+            &:focus {
+                background-color: lighten(#de7418, 5%);
+                border-color: lighten(#de7418, 5%);
+            }
+        }
+    </style>
+    <h1>Atualize os pontos aqui!</h1>
+    <h4>Atualização feita apenas com extensões xlsx! <a href="/download" class="no-underline"> Modelo da base</a></h4>
+    <div class="container">
+        <div class="form-group">
+            <form method="POST" action="upload" method="POST" enctype="multipart/form-data">
+                <div class="input-group shadow" style="margin-block-end: 18px">
+                    <select class="form-select" aria-label="Selecione a campanha" name="campanha_id" required>
+                        <option disabled selected value="">📢  Selecione a campanha</option>
+                        {% for campanha in campanhas %}
+                        <option value="{{campanha}}">{{campanha}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="input-group shadow">
+                    <label class="input-group-text" for="inputGroupFile01">📄</label>
+                    <input type="file" class="form-control" id="inputGroupFile01" name="file" accept=".xlsx" required>
+                    <button type="submit" value="Submit" class="btn btn-outline-success">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
