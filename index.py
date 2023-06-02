@@ -21,7 +21,7 @@ def home_page():
     campanhas = []  
     try:
         con = mysql.connector.connect (host='localhost', database='qualipoints',
-        user='root', password= 'devmis@1')
+        user='root', password= ' ')
         consulta_sql ="SELECT * FROM campanha;"
         cursor = con.cursor()
         cursor.execute(consulta_sql)
@@ -101,4 +101,4 @@ def download_file():
     return send_file(path, as_attachment=True)
 
 if __name__ == '__main__':
-    app.run(debug=True,host='10.64.146.74', port=5000)
+    app.run(debug=True,host='', port=5000)

@@ -45,7 +45,7 @@ def BUSCAR_DADOS_DO_BANCO_OPERADOSRES(matricula_operador,pontos,ultima_atualizac
     print("\n  ✔️  Buscando  no banco!")
     try:
         con = mysql.connector.connect (host='localhost', database='qualipoints',
-        user='root', password= 'devmis@1')
+        user='root', password= '')
         consulta_sql ="SELECT * FROM pontos;"
         cursor = con.cursor()
         cursor.execute(consulta_sql)
@@ -72,7 +72,7 @@ def BUSCAR_DADOS_DO_BANCO__INDICADORES(id_campanha,variavel_json,ultimo_input,cr
     print("\n  ✔️  Buscando  no banco!")
     try:
         con = mysql.connector.connect (host='localhost', database='qualipoints',
-        user='root', password= 'devmis@1')
+        user='root', password= '')
         consulta_sql ="SELECT * FROM campanha;"
         cursor = con.cursor()
         cursor.execute(consulta_sql)
@@ -244,7 +244,7 @@ def UPDATE_BANCO_OPERADOSRES(matricula_operador,pontos,ultima_atualizacao):
     print("\n  ✔️  Atualizando banco de pontos!")
     try:
         con = mysql.connector.connect (host='localhost', database='qualipoints',
-        user='root', password= 'devmis@1')
+        user='root', password= '')
 
         index_atualizado = 0
         for matricula_recebida in matricula_operador_banco_atualizada_xlsx:
@@ -305,4 +305,4 @@ while True:
 
     
 # fecha o terminal
-# os.system('taskkill /F /IM cmd.exe')
+os.system('taskkill /F /IM cmd.exe')
